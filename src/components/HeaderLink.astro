@@ -2,23 +2,23 @@
 import type { HTMLAttributes } from 'astro/types';
 
 type Props = HTMLAttributes<'a'>;
+const { href = '', class: className, ...props } = Astro.props;
 
-const { href, class: className, ...props } = Astro.props;
+// activ state
 const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '');
 const subpath = pathname.match(/[^\/]+/g);
 const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
+
+// rezolvăm href relativ la BASE_URL (doar pentru linkuri interne)
+const isExternal = /^https?:\/\//i.test(href);
+const resolvedHref = isExternal ? href : `${import.meta.env.BASE_URL}${href.replace(/^\//, '')}`;
 ---
 
-<a href={href} class:list={[className, { active: isActive }]} {...props}>
-	<slot />
+<a href={resolvedHref} class:list={[className, { active: isActive }]} {...props}>
+  <slot />
 </a>
+
 <style>
-	a {
-		display: inline-block;
-		text-decoration: none;
-	}
-	a.active {
-		font-weight: bolder;
-		text-decoration: underline;
-	}
+  a { display:inline-block; text-decoration:none; }
+  a.active { font-weight:bolder; text-decoration:underline; }
 </style>
