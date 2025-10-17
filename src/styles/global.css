@@ -5,6 +5,7 @@
  */
 
 :root {
+<<<<<<< HEAD
   color-scheme: dark;
 
   /* Culori principale în dark */
@@ -24,6 +25,19 @@
   --box-shadow: 0 2px 6px rgba(0,0,0,.25), 0 8px 24px rgba(0,0,0,.33), 0 16px 32px rgba(0,0,0,.4);
 }
 
+=======
+	--accent: #2337ff;
+	--accent-dark: #000d8a;
+	--black: 15, 18, 25;
+	--gray: 96, 115, 159;
+	--gray-light: 229, 233, 240;
+	--gray-dark: 34, 41, 57;
+	--gray-gradient: rgba(var(--gray-light), 50%), #fff;
+	--box-shadow:
+		0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%), 0 16px 32px
+		rgba(var(--gray), 33%);
+}
+>>>>>>> 0c0edee923b6175751bcca8b5575436789fc924b
 @font-face {
 	font-family: "Atkinson";
 	src: url("/fonts/atkinson-regular.woff") format("woff");
@@ -39,9 +53,23 @@
 	font-display: swap;
 }
 body {
+<<<<<<< HEAD
   background: linear-gradient(var(--gray-gradient)) no-repeat;
   background-color: rgb(var(--black));
   color: rgb(var(--gray-dark));
+=======
+	font-family: "Atkinson", sans-serif;
+	margin: 0;
+	padding: 0;
+	text-align: left;
+	background: linear-gradient(var(--gray-gradient)) no-repeat;
+	background-size: 100% 600px;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+	color: rgb(var(--gray-dark));
+	font-size: 20px;
+	line-height: 1.7;
+>>>>>>> 0c0edee923b6175751bcca8b5575436789fc924b
 }
 main {
 	width: 720px;
