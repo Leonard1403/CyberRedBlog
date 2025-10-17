@@ -1,4 +1,3 @@
-/* === DARK THEME (forced) =================================== */
 :root {
   color-scheme: dark;
 
@@ -34,7 +33,7 @@ body {
   line-height: 1.7;
 }
 
-/* Headerele pe text deschis (nu mai folosi --black aici) */
+/* Titlurile să fie deschise pe fundal închis */
 h1, h2, h3, h4, h5, h6 {
   color: rgb(var(--gray-dark));
 }
