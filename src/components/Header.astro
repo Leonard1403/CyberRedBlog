@@ -3,62 +3,79 @@ import HeaderLink from './HeaderLink.astro';
 import { SITE_TITLE } from '../consts';
 ---
 
-<header>
+<header class="site-header">
   <nav class="nav" aria-label="Primary">
     <a href="/" class="logo">{SITE_TITLE}</a>
 
-    <ul class="menu">
-      <li><a href="/">Home</a></li>
-      <li><a href="/blog/">Blog</a></li>
-      <li><a href="/about/">About</a></li>
+    <ul class="menu" role="list">
+      <li><HeaderLink href="/">Home</HeaderLink></li>
+      <li><HeaderLink href="/blog/">Blog</HeaderLink></li>
+      <li><HeaderLink href="/about/">About</HeaderLink></li>
     </ul>
 
-    <div class="spacer"></div>
+    <div class="spacer" aria-hidden="true"></div>
   </nav>
 </header>
 
 <style>
   .nav {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    position: relative;
+    display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 1rem 0;
   }
 
+  /* Logo la stânga, aspect curat */
   .logo {
     font-weight: 700;
     text-decoration: none;
-    justify-self: start;
+    color: inherit;
+    line-height: 1;
   }
 
+  /* Meniu centrat perfect pe orizontală */
   .menu {
-    justify-self: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     gap: .75rem;
     list-style: none;
     margin: 0;
     padding: 0;
+    line-height: 1;
   }
 
   .menu a {
     text-decoration: none;
+    color: inherit;
+    font-weight: 500;
   }
 
+  .menu a:hover {
+    color: var(--accent);
+  }
+
+  /* Spațiu „fantomă” în dreapta pentru echilibru (dacă vei adăuga acțiuni) */
   .spacer {
-    justify-self: end;
+    width: 2.5rem;
+    height: 1px;
   }
 
-  /* Responsive: pe mobil centrăm totul pe o singură coloană */
+  /* Mobil: stivuim și centrăm totul */
   @media (max-width: 720px) {
     .nav {
-      grid-template-columns: 1fr;
-      row-gap: .5rem;
+      flex-direction: column;
+      gap: .5rem;
     }
     .logo {
-      justify-self: center;
+      align-self: center;
     }
     .menu {
-      justify-self: center;
+      position: static;
+      transform: none;
+      justify-content: center;
     }
     .spacer {
       display: none;
