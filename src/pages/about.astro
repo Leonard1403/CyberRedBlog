@@ -37,14 +37,20 @@ const pageTitle = 'About me';
     .thm-embed { margin: .75rem 0 1.25rem; }
 
     /* === Fix iframe THM === */
-    .thm-wrap { display:flex; justify-content:center; }
-.thm-badge {
+    ..thm-wrap { display:flex; justify-content:center; }
+
+.thm-badge{
   display:block;
-  height:140px;     /* fă-l mai mare/mic: 120–160px după gust */
   width:auto;
+  height:118px;        /* micșorat (era ~140px). Încearcă 118–122px */
+  max-width:100%;
   border-radius:12px;
+  image-rendering:auto;     /* asigură interpolare normală */
 }
-@media (max-width: 540px) { .thm-badge { height:128px; } }
+
+@media (max-width:540px){
+  .thm-badge{ height:108px; }  /* puțin mai mic pe mobil */
+}
 
     /* List bullets – culoare și aliniere mai ok în dark */
 
