@@ -41,51 +41,51 @@ const pageTitle = 'About me';
     .thm-embed { margin: .75rem 0 1.25rem; }
 
     /* === Fix iframe THM === */
-.thm-wrap {
-  display: flex;
-  justify-content: center;
+.thm-wrap{
+  display:flex;
+  justify-content:center;
 }
 
-/* card mai mic, cu fundal discret */
-.thm-card {
-  background: rgba(var(--gray-light), 0.16);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 16px;
-  padding: 8px;                 /* micșorează “dreptunghiul” */
+/* card compact */
+.thm-card{
+  display:inline-block;                 /* card-ul ia doar cât conținutul */
+  padding:6px;                          /* mai mic decât 8px */
+  background: rgba(var(--black), .35);  /* fundal mai închis, nu pare “pata” */
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:16px;
   box-shadow: var(--box-shadow);
 }
 
-/* fereastra de decupare — aici controlăm mărimea finală */
-.thm-crop {
-  width: 436px;                 /* mai îngust = badge mai “sharp” */
-  height: 106px;                /* taie exact partea albă */
+/* fereastra de decupare (CONTROL mărime finală) */
+.thm-crop{
+  width: 432px;     /* 428–438px după gust; mai mic => badge mai “sharp” */
+  height: 98px;     /* TAIE albul. Dacă mai vezi: 97 → 96 */
   overflow: hidden;
-  border-radius: 12px;
+  border-radius:12px;
 }
 
-/* iframe-ul: îl “aliniem” în fereastră și mai masăm 1–2px jos */
-.thm-frame {
-  display: block;
-  width: 436px;
-  height: 200px;                /* orice > height-ul crop-ului e ok */
-  border: 0;
-  background: transparent;
-  position: relative;
-  top: -2px;                    /* ajustează -1 / -2 / -3 dacă mai vezi alb */
+/* poziționează conținutul badge-ului în fereastra de 98px */
+.thm-frame{
+  display:block;
+  width: 432px;
+  height: 180px;            /* orice > 98 e ok */
+  border:0;
+  background:transparent;
+  transform: translateY(-14px);  /* ajustează: -12 / -15 dacă vrei */
 }
 
-/* mobil: păstrează proporțiile fără să umfle imaginea */
-@media (max-width: 540px) {
-  .thm-card { padding: 6px; }
-  .thm-crop {
-    width: min(100%, 436px);
-    aspect-ratio: 436 / 106;
+/* mobil: menținem proporția fără upscaling */
+@media (max-width:540px){
+  .thm-card{ padding:5px; }
+  .thm-crop{
+    width: min(100%, 432px);
+    aspect-ratio: 432 / 98;
     height: auto;
   }
-  .thm-frame {
+  .thm-frame{
     width: 100%;
-    height: 200px;
-    top: -2px;
+    height: 180px;
+    transform: translateY(-12px);
   }
 }
 
