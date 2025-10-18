@@ -14,17 +14,18 @@ const pageTitle = 'About me';
       Învăț constant și încerc să public write-up-uri de pe TryHackMe, HackTheBox și alte CTF-uri.
     </p>
 
-    <div class="badges">
-      <h2>TryHackMe</h2>
-      <div class="thm-embed">
-        <iframe
-          class="thm-frame"
-          src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=592680"
-          loading="lazy"
-          title="TryHackMe profile"
-        ></iframe>
-      </div>
-    </div>
+	<div class="badges">
+		<h2>TryHackMe</h2>
+		<div class="thm-wrap">
+			<iframe
+				class="thm-frame"
+				src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=592680"
+				title="TryHackMe profile"
+				loading="lazy"
+				scrolling="no"
+			></iframe>
+		</div>
+	</div>
   </section>
 
   <style>
@@ -35,22 +36,26 @@ const pageTitle = 'About me';
     .thm-embed { margin: .75rem 0 1.25rem; }
 
     /* === Fix iframe THM === */
-    .thm-frame {
-      display: block;
-      width: 100%;
-      height: 150px;           /* ajustează la 140–160 dacă vrei */
-      border: none;
-      background: transparent; /* scoate “pata” albă */
-      overflow: hidden;        /* fără scrollbars */
-      border-radius: 12px;     /* rotunjire ca restul cardurilor */
-    }
-    @media (max-width: 720px) {
-      .thm-frame { height: 140px; }
-    }
+    .thm-wrap {
+    display: flex;
+    justify-content: center;   /* centrează badge-ul */
+  }
+
+  .thm-frame {
+    display: block;
+    width: 480px;              /* lățimea badge-ului; mărește/scade după gust (ex. 520px) */
+    max-width: 100%;
+    height: 132px;             /* elimină “partea albă” de jos (ajustează 128–140) */
+    border: 0;
+    background: transparent;
+    overflow: hidden;          /* ascunde eventualul scroll interior */
+    border-radius: 12px;
+  }
+    @media (max-width: 540px) {
+    .thm-frame { width: 100%; height: 128px; }
+  }
 
     /* List bullets – culoare și aliniere mai ok în dark */
-    .about ul { color: rgb(var(--gray)); padding-left: 1.25rem; }
-    .about li::marker { color: var(--accent); }
 
     .grid {
       display: grid;

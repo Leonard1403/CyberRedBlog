@@ -143,5 +143,39 @@ hr { border-top: 1px solid rgb(var(--gray-light)); }
 	/* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
 	white-space: nowrap;
 }
+ul, ol {
+  /* spațiere consistentă + aliniere */
+  padding-left: 1.25rem;
+  margin: 0 0 1em;
+  color: rgb(var(--gray)); /* textul din listă, nu markerul */
+  list-style-position: outside;
+}
+
+li { margin: .25rem 0; }
+
+/* culoarea bullet-urilor / numerelor */
+li::marker {
+  color: var(--accent);
+  font-weight: 600; /* numerotare un pic mai vizibilă */
+}
+
+/* stiluri pentru listele din articole (de obicei în .prose) */
+.prose ul, .prose ol { padding-left: 1.25rem; }
+.prose li::marker { color: var(--accent); }
+
+/* liste imbricate: disc → circle → square / decimal */
+ul { list-style-type: disc; }
+ul ul { list-style-type: circle; }
+ul ul ul { list-style-type: square; }
+ol { list-style-type: decimal; }
+
+/* un pic de spațiu când o listă e în interiorul unui <li> */
+li > ul, li > ol { margin-top: .25em; }
+
+/* (opțional) checkbox-uri în markdown task-lists */
+.prose input[type="checkbox"] {
+  accent-color: var(--accent);
+  transform: translateY(1px);
+}
 
 ::selection { background: rgba(138,180,255,.2); }
