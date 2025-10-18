@@ -18,19 +18,17 @@ const pageTitle = 'About me';
   <h2>TryHackMe</h2>
 
   <div class="thm-wrap">
-    <div class="thm-card">
-      <div class="thm-crop">
-        <iframe
-          class="thm-frame"
-          src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=592680"
-          title="TryHackMe profile"
-          loading="lazy"
-          scrolling="no"
-        ></iframe>
-      </div>
-    </div>
-  </div>
+  <a class="thm-card" href="https://tryhackme.com/p/Leo14.03" target="_blank" rel="noopener">
+    <img
+      class="thm-img"
+      src="https://tryhackme-badges.s3.amazonaws.com/Leo14.03.png"
+      alt="TryHackMe badge - Leo14.03"
+      loading="lazy"
+      decoding="async"
+    />
+  </a>
 </div>
+  
   </section>
 
   <style>
@@ -43,50 +41,33 @@ const pageTitle = 'About me';
     /* === Fix iframe THM === */
 .thm-wrap{
   display:flex;
-  justify-content:center;
+  justify-content:center;   /* centrează pe orizontală */
+  margin: .25rem 0 1.25rem;
 }
 
-/* card compact */
+/* card subțire, fără “pată” albă */
 .thm-card{
-  display:inline-block;                 /* card-ul ia doar cât conținutul */
-  padding:6px;                          /* mai mic decât 8px */
-  background: rgba(var(--black), .35);  /* fundal mai închis, nu pare “pata” */
+  display:inline-block;
+  padding:6px;
+  background: rgba(var(--black), .35);
   border:1px solid rgba(255,255,255,.06);
   border-radius:16px;
   box-shadow: var(--box-shadow);
+  text-decoration:none;
 }
 
-/* fereastra de decupare (CONTROL mărime finală) */
-.thm-crop{
-  width: 432px;     /* 428–438px după gust; mai mic => badge mai “sharp” */
-  height: 98px;     /* TAIE albul. Dacă mai vezi: 97 → 96 */
-  overflow: hidden;
+/* imaginea PNG are fundal transparent */
+.thm-img{
+  display:block;
+  width:432px;         /* poți ajusta 380–480px după gust */
+  height:auto;
   border-radius:12px;
 }
 
-/* poziționează conținutul badge-ului în fereastra de 98px */
-.thm-frame{
-  display:block;
-  width: 432px;
-  height: 180px;            /* orice > 98 e ok */
-  border:0;
-  background:transparent;
-  transform: translateY(-14px);  /* ajustează: -12 / -15 dacă vrei */
-}
-
-/* mobil: menținem proporția fără upscaling */
+/* responsive */
 @media (max-width:540px){
   .thm-card{ padding:5px; }
-  .thm-crop{
-    width: min(100%, 432px);
-    aspect-ratio: 432 / 98;
-    height: auto;
-  }
-  .thm-frame{
-    width: 100%;
-    height: 180px;
-    transform: translateY(-12px);
-  }
+  .thm-img{ width:min(100%,432px); }
 }
 
     /* List bullets – culoare și aliniere mai ok în dark */
