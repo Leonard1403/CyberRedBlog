@@ -37,28 +37,23 @@ const pageTitle = 'About me';
     .thm-embed { margin: .75rem 0 1.25rem; }
 
     /* === Fix iframe THM === */
-.thm-wrap {
-  display: flex;
-  justify-content: center;
-}
+.thm-wrap { display:flex; justify-content:center; }
 
-/* === IFRAME: fără „pata” albă, fără blur =================== */
-.thm-frame {
-  display: block;
-  width: 480px;      /* NU-l mări peste ~480–520px ca să rămână clar */
-  height: 128px;     /* taie orice spațiu alb de jos */
+/* Badge clar, fără alb dedesubt */
+.thm-frame{
+  display:block;
+  width: 450px;   /* mai mic => mai clar; încearcă 440–460 după gust */
+  height: 120px;  /* taie zona albă; dacă mai vezi, scade la 119/118 */
   border: 0;
   background: transparent;
-  overflow: hidden;  /* safety */
+  overflow: hidden;
   border-radius: 12px;
 }
 
-/* Pe ecrane înguste — păstrăm raportul și nu-l mărim */
-@media (max-width: 540px) {
-  .thm-frame {
+@media (max-width:540px){
+  .thm-frame{
     width: 100%;
-    aspect-ratio: 480 / 128;  /* menține proporția */
-    height: auto;             /* calculează automat din lățime */
+    height: 116px;  /* pe mobil badge-ul e redat un pic diferit; ajustează 114–118 */
   }
 }
 
