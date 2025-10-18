@@ -40,23 +40,22 @@ const today = new Date();
 	</div>
 </footer>
 <style>
-	footer {
-		padding: 2em 1em 6em 1em;
-		background: linear-gradient(var(--gray-gradient)) no-repeat;
-		color: rgb(var(--gray));
-		text-align: center;
-	}
-	.social-links {
-		display: flex;
-		justify-content: center;
-		gap: 1em;
-		margin-top: 1em;
-	}
-	.social-links a {
-		text-decoration: none;
-		color: rgb(var(--gray));
-	}
-	.social-links a:hover {
-		color: rgb(var(--gray-dark));
-	}
+  footer {
+    margin-top: 4rem;
+    padding: 2rem 0;
+    background: rgba(var(--gray-light), 0.18); /* subtil, dar vizibil */
+    border-top: 1px solid rgba(255,255,255,0.06);
+    color: rgb(var(--gray));
+  }
+  footer .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    margin-top: 1em;
+  }
+  footer .social-links a {
+    text-decoration: none;
+    color: rgb(var(--gray));
+  }
+  footer .social-links a:hover { color: rgb(var(--gray-dark)); }
 </style>
