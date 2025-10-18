@@ -15,17 +15,18 @@ const pageTitle = 'About me';
     </p>
 
 	<div class="badges">
-		<h2>TryHackMe</h2>
-		<div class="thm-wrap">
-			<iframe
-				class="thm-frame"
-				src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=592680"
-				title="TryHackMe profile"
-				loading="lazy"
-				scrolling="no"
-			></iframe>
-		</div>
-	</div>
+  <h2>TryHackMe</h2>
+  <div class="thm-wrap">
+    <a href="https://tryhackme.com/p/Leo14.03" target="_blank" rel="noopener">
+      <img
+        class="thm-badge"
+        src="https://tryhackme-badges.s3.amazonaws.com/Leo14.03.png"
+        alt="TryHackMe badge - Leo14.03"
+        loading="lazy"
+      />
+    </a>
+  </div>
+</div>
   </section>
 
   <style>
@@ -36,24 +37,14 @@ const pageTitle = 'About me';
     .thm-embed { margin: .75rem 0 1.25rem; }
 
     /* === Fix iframe THM === */
-    .thm-wrap {
-    display: flex;
-    justify-content: center;   /* centrează badge-ul */
-  }
-
-  .thm-frame {
-    display: block;
-    width: 480px;              /* lățimea badge-ului; mărește/scade după gust (ex. 520px) */
-    max-width: 100%;
-    height: 132px;             /* elimină “partea albă” de jos (ajustează 128–140) */
-    border: 0;
-    background: transparent;
-    overflow: hidden;          /* ascunde eventualul scroll interior */
-    border-radius: 12px;
-  }
-    @media (max-width: 540px) {
-    .thm-frame { width: 100%; height: 128px; }
-  }
+    .thm-wrap { display:flex; justify-content:center; }
+.thm-badge {
+  display:block;
+  height:140px;     /* fă-l mai mare/mic: 120–160px după gust */
+  width:auto;
+  border-radius:12px;
+}
+@media (max-width: 540px) { .thm-badge { height:128px; } }
 
     /* List bullets – culoare și aliniere mai ok în dark */
 
