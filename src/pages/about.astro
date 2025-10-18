@@ -26,7 +26,6 @@ const pageTitle = 'About me';
     ></iframe>
   </div>
 </div>
-</div>
   </section>
 
   <style>
@@ -37,23 +36,29 @@ const pageTitle = 'About me';
     .thm-embed { margin: .75rem 0 1.25rem; }
 
     /* === Fix iframe THM === */
-.thm-wrap { display:flex; justify-content:center; }
+.thm-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
 
-/* Badge clar, fără alb dedesubt */
+/* Dimensiuni recomandate: începe cu 440×110 și ajustează 1–2px dacă mai vezi alb */
 .thm-frame{
-  display:block;
-  width: 450px;   /* mai mic => mai clar; încearcă 440–460 după gust */
-  height: 120px;  /* taie zona albă; dacă mai vezi, scade la 119/118 */
+  display: block;
+  width: 440px;   /* 430–450 după gust; mai mic = mai clar */
+  height: 110px;  /* dacă mai vezi alb: coboară la 109 / 108 / 107 */
   border: 0;
   background: transparent;
   overflow: hidden;
   border-radius: 12px;
 }
 
-@media (max-width:540px){
+/* Mobil: menține proporția fără să mărești prea mult */
+@media (max-width: 540px){
   .thm-frame{
     width: 100%;
-    height: 116px;  /* pe mobil badge-ul e redat un pic diferit; ajustează 114–118 */
+    aspect-ratio: 440 / 110;
+    height: auto;
   }
 }
 
