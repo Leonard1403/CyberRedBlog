@@ -16,16 +16,18 @@ const pageTitle = 'About me';
 
 	<div class="badges">
   <h2>TryHackMe</h2>
+
   <div class="thm-wrap">
-    <div class="thm-crop">
-      <iframe
-        class="thm-frame"
-        src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=592680"
-        title="TryHackMe profile"
-        loading="lazy"
-        scrolling="no"
-        style="color-scheme: normal"  <!-- mic workaround pentru albul forțat în unele browsere -->
-      ></iframe>
+    <div class="thm-card">
+      <div class="thm-crop">
+        <iframe
+          class="thm-frame"
+          src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=592680"
+          title="TryHackMe profile"
+          loading="lazy"
+          scrolling="no"
+        ></iframe>
+      </div>
     </div>
   </div>
 </div>
@@ -39,30 +41,52 @@ const pageTitle = 'About me';
     .thm-embed { margin: .75rem 0 1.25rem; }
 
     /* === Fix iframe THM === */
-.thm-wrap { display:flex; justify-content:center; }
+.thm-wrap {
+  display: flex;
+  justify-content: center;
+}
 
-/* aici se face magia: tăiem partea albă din interiorul iframe-ului */
-.thm-crop {
-  width: 438px;         /* 430–450px după gust; mai mic = mai “sharp” */
-  height: 108px;        /* coboară 108→107→106 dacă mai vezi pic de alb */
-  overflow: hidden;     /* TAIE tot ce e în afara acestei ferestre */
-  border-radius: 12px;
+/* card mai mic, cu fundal discret */
+.thm-card {
+  background: rgba(var(--gray-light), 0.16);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  padding: 8px;                 /* micșorează “dreptunghiul” */
   box-shadow: var(--box-shadow);
 }
 
-/* iframe-ul poate fi mai mare, nu contează — e tăiat de .thm-crop */
-.thm-frame {
-  display:block;
-  width: 438px;
-  height: 200px;        /* orice >108 e ok; vezi doar fereastra de 108px de mai sus */
-  border: 0;
-  background: transparent;
+/* fereastra de decupare — aici controlăm mărimea finală */
+.thm-crop {
+  width: 436px;                 /* mai îngust = badge mai “sharp” */
+  height: 106px;                /* taie exact partea albă */
+  overflow: hidden;
+  border-radius: 12px;
 }
 
-/* pe mobil menținem proporția fără upscaling (claritate mai bună) */
+/* iframe-ul: îl “aliniem” în fereastră și mai masăm 1–2px jos */
+.thm-frame {
+  display: block;
+  width: 436px;
+  height: 200px;                /* orice > height-ul crop-ului e ok */
+  border: 0;
+  background: transparent;
+  position: relative;
+  top: -2px;                    /* ajustează -1 / -2 / -3 dacă mai vezi alb */
+}
+
+/* mobil: păstrează proporțiile fără să umfle imaginea */
 @media (max-width: 540px) {
-  .thm-crop { width: 100%; height: calc(100vw * (108 / 438)); }
-  .thm-frame { width: 100%; height: 200px; }
+  .thm-card { padding: 6px; }
+  .thm-crop {
+    width: min(100%, 436px);
+    aspect-ratio: 436 / 106;
+    height: auto;
+  }
+  .thm-frame {
+    width: 100%;
+    height: 200px;
+    top: -2px;
+  }
 }
 
     /* List bullets – culoare și aliniere mai ok în dark */
