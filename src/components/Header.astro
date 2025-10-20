@@ -85,4 +85,10 @@ import HeaderLink from './HeaderLink.astro';
   }
   nav a:hover { color: var(--accent); }
   nav a.active { color: var(--accent); border-bottom-color: var(--accent); text-decoration: none; }
+
+  .social-links, .social-links a { display: flex; }
+  .social-links a { color: rgb(var(--gray)); text-decoration: none; }
+  .social-links a:hover { color: var(--accent); }
+
+  @media (max-width: 720px) { .social-links { display: none; } }
 </style>

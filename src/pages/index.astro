@@ -9,6 +9,12 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	    <style>
+          html, body { height: 100%; }
+          body { margin: 0; min-height: 100vh; display: flex; flex-direction: column; }
+          main { flex: 1 0 auto; }
+          footer { margin-top: auto; }
+        </style>
 	</head>
 	<body>
 		<Header />
