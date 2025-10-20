@@ -19,7 +19,7 @@ const posts = (await getCollection('writeups')).sort(
 	<ul>
 		{posts.map((post) => (
 			<li>
-				<a href={`/writeups/${post.id}/`}>{post.data.title}</a>
+				<a href={`${import.meta.env.BASE_URL}writeups/${post.id}/`}>{post.data.title}</a>
 				<p>{post.data.description}</p>
 			</li>
 		))}
